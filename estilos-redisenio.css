@@ -1,0 +1,259 @@
+/* Sushi Agüi — capa visual v3. Se carga al final para conservar los estilos originales. */
+:root {
+  --agui-orange: #f58220;
+  --agui-orange-dark: #d9680b;
+  --agui-ink: #11100f;
+  --agui-paper: #fffaf4;
+  --agui-muted: #6f6861;
+  --agui-radius: 22px;
+  --agui-shadow: 0 18px 45px rgba(20, 12, 5, .13);
+}
+
+html { scroll-padding-top: 92px; }
+body {
+  color: var(--agui-ink);
+  background: var(--agui-paper);
+  font-family: 'Didact Gothic', sans-serif;
+}
+body, button, input, select { font-family: 'Didact Gothic', sans-serif; }
+
+/* Navegación */
+body > nav.navbar {
+  min-height: 82px;
+  padding: 10px clamp(14px, 4vw, 54px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 5px 24px rgba(0,0,0,.08);
+  backdrop-filter: blur(12px);
+}
+.navbar .logo { flex: 0 0 auto; }
+.navbar .logo img { width: 66px; height: 58px; object-fit: contain; margin: 0; }
+.navbar .navbar-collapse { flex: 1; justify-content: center; }
+.navbar .navbar-nav { gap: clamp(8px, 2vw, 26px); margin: 0; }
+.navbar .navbar-nav .nav-link {
+  padding: 10px 3px;
+  color: #24211e !important;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus { color: var(--agui-orange-dark) !important; }
+.navbar .icons { margin: 0 8px 0 auto; position: relative; }
+.navbar .icons #btnCarrito {
+  width: 44px; height: 44px; padding: 0;
+  display: grid; place-items: center;
+  border: 1px solid #eee2d6; border-radius: 50%; background: #fff;
+}
+.navbar .icons #btnCarrito:hover { background: #fff2e6; }
+.navbar .icons #btnCarrito i { font-size: 17px; color: var(--agui-ink); }
+.navbar .cart-item-count {
+  position: absolute; top: -5px; right: -7px;
+  min-width: 21px; height: 21px; padding: 2px 6px;
+  display: grid; place-items: center;
+  border: 2px solid #fff; background: var(--agui-orange); color: #fff;
+  font-size: 11px; font-weight: 700;
+}
+.navbar .navbar-toggler { margin: 0; padding: 8px; border: 1px solid #eadfd5 !important; }
+.navbar .navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(245,130,32,.2); }
+
+/* Portada */
+.banner {
+  min-height: min(760px, 88vh);
+  height: auto;
+  position: relative;
+  align-items: center;
+  padding: 150px 20px 90px;
+  background-position: center 48%;
+  background-attachment: scroll;
+  isolation: isolate;
+}
+.banner::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.34) 58%, rgba(0,0,0,.12)),
+              linear-gradient(0deg, rgba(0,0,0,.45), transparent 60%);
+}
+.banner-description {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 58px);
+  text-align: left;
+}
+.banner-description .line {
+  width: 68px; height: 4px; margin: 0 0 24px;
+  background: var(--agui-orange); border-radius: 8px;
+}
+.banner-description h2 {
+  max-width: 850px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(27px, 4.2vw, 52px);
+  line-height: 1.18;
+  font-weight: 600;
+  text-wrap: balance;
+  text-shadow: 0 3px 18px rgba(0,0,0,.32);
+}
+.banner-description::after {
+  content: 'SUSHI AGÜI · CALIDAD Y SABOR';
+  display: block; margin-top: 26px;
+  color: #ffd2a7; font-size: 12px; font-weight: 700; letter-spacing: .22em;
+}
+
+/* Beneficios */
+.seccion { padding: 22px clamp(12px, 3vw, 42px) 34px; background: #fff; }
+.events .row { max-width: 1160px; margin: 0 auto; gap: 16px; }
+.events .row .col {
+  min-height: 142px; justify-content: center; padding: 22px 12px;
+  border: 1px solid #f0e8df; border-radius: 18px; background: #fff;
+  box-shadow: 0 8px 24px rgba(30,20,10,.045);
+}
+.events .col img { width: 48px; height: 48px; object-fit: contain; }
+.events .col h4 { margin: 12px 0 0; color: #27221e; font-size: 16px; }
+
+/* Menú */
+.menu {
+  padding: clamp(58px, 7vw, 92px) 20px;
+  background-color: #f5e8d9;
+  background-image: linear-gradient(rgba(255,250,244,.86), rgba(255,250,244,.91)), url('imagenes/fondo naranja.png');
+  background-size: cover; background-position: center;
+}
+.menu > h1 {
+  margin: 0 auto 42px; color: var(--agui-ink);
+  font-size: clamp(32px, 4vw, 46px); letter-spacing: -.03em;
+}
+.menu > h1::after {
+  content: ''; display: block; width: 54px; height: 4px;
+  margin: 14px auto 0; background: var(--agui-orange); border-radius: 8px;
+}
+.menu .menu-box {
+  width: min(100%, 1180px); gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+}
+.menu .menu-box .menu-card {
+  min-width: 0; margin: 0; border: 1px solid rgba(60,40,20,.08);
+  border-radius: var(--agui-radius); background: #fff;
+  box-shadow: 0 12px 30px rgba(45,27,10,.09);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.menu .menu-box .menu-card:hover { transform: translateY(-6px); box-shadow: var(--agui-shadow); }
+.menu .menu-box .menu-card .menu-img { height: 220px; border-radius: 0; }
+.menu .menu-box .menu-card .menu-img img { transition: transform .45s ease; }
+.menu .menu-box .menu-card .menu-info { width: 100%; flex: 1; padding: 7px 18px 22px; }
+.menu .menu-box .menu-card .menu-info h2 {
+  margin: 12px 0 5px; color: #28221d; font-size: 21px; font-weight: 700;
+}
+.menu .menu-box .menu-card .menu-info p {
+  min-height: 42px; margin: 4px 0 8px; color: var(--agui-muted);
+  font-size: 14px; line-height: 1.5;
+}
+.menu .menu-box .menu-card .menu-info h3 {
+  margin: 5px 0 12px; color: var(--agui-orange-dark); font-size: 23px; font-weight: 800;
+}
+.menu .menu-box .menu-card .menu-info .cart-container { margin-top: auto; }
+.menu .menu-box .menu-card .menu-info .counter-btn {
+  width: 34px; height: 34px; padding: 0; border-radius: 50%;
+  background: #fff1e5; color: #9c4b08; font-size: 18px; font-weight: 700;
+}
+.menu .menu-box .menu-card .menu-info .counter-btn:hover { background: var(--agui-orange); color: #fff; }
+.menu .menu-box .menu-card .menu-info .counter { min-width: 20px; font-weight: 700; }
+.menu .menu-box .menu-card .menu-info .menu-btn-carro {
+  width: 40px; height: 40px; margin: 0 0 0 10px; padding: 0;
+  display: inline-grid; place-items: center; border: 0; border-radius: 50%;
+  background: var(--agui-orange); color: #fff;
+}
+.menu .menu-box .menu-card .menu-info .menu-btn-carro:hover { transform: translateY(-2px); background: var(--agui-orange-dark); color: #fff; }
+
+/* Servicios y suscripción */
+.banner-servicios { height: auto; min-height: 130px; display: grid; place-items: center; padding: 28px 18px; background-size: cover; }
+.banner-servicios .div-servicios { width: 100%; padding: 0; }
+.banner-servicios .div-servicios h2 { margin: 0; font-size: clamp(30px, 4vw, 43px); white-space: normal; }
+.servicios1, .servicios2 { align-items: center; gap: clamp(20px, 4vw, 60px); padding: clamp(38px, 6vw, 76px) clamp(18px, 6vw, 90px); }
+.servicios1 .descrip-servicios, .servicios2 .descrip-servicios { max-width: 540px; flex: 1 1 320px; text-align: left; }
+.servicios1 .descrip-servicios h3, .servicios2 .descrip-servicios h3 { display: inline-block; margin-bottom: 18px; font-size: clamp(25px, 3vw, 34px); text-decoration-color: var(--agui-orange); text-decoration-thickness: 3px; text-underline-offset: 8px; }
+.servicios1 .descrip-servicios p, .servicios2 .descrip-servicios p { font-size: 17px; line-height: 1.8; color: #39332d; }
+.servicios1 .img-servicios, .servicios2 .img-servicios { flex: 1 1 320px; max-width: 540px; }
+.servicios1 .img-servicios img, .servicios2 .img-servicios img { display: block; width: 100%; height: clamp(230px, 28vw, 360px); object-fit: cover; border-radius: 20px; box-shadow: var(--agui-shadow); }
+.minibanner { min-height: 300px; height: auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 22px; padding: 38px 20px; background-position: center; background-size: cover; }
+.minibanner .cont-minibanner { width: auto; height: auto; margin: 0; }
+.minibanner .cont-minibanner p { margin: 0; font-size: clamp(28px, 4vw, 42px); }
+.minibanner .div-sus { width: min(100%, 340px); height: auto; margin: 0; }
+.minibanner .div-sus .suscription { width: 100%; min-height: 180px; padding: 22px; }
+.minibanner .div-sus .suscription .form { width: 100%; height: auto; }
+.minibanner .div-sus .suscription .input { width: 100%; min-height: 42px; padding: 9px 12px; border-radius: 8px; }
+.minibanner .div-sus .suscription .btn-sub { min-height: 42px; margin-top: 10px; }
+
+/* Footer */
+.footer { padding: 52px 20px 34px; background: #11100f; }
+.footer .container-f { width: min(100%, 1160px); margin: auto; }
+.footer .row-f { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.footer .footer-col h4 { margin: 8px 0 18px; color: #fff; font-size: 15px; font-weight: 700; letter-spacing: .08em; }
+.footer .ul-f { padding: 0; list-style: none; }
+.footer .ul-f li { margin: 9px 0; }
+.footer .ul-f a { color: #c9c1b9; text-decoration: none; font-size: 14px; }
+.footer .ul-f a:hover { color: var(--agui-orange); }
+.footer .social-links { display: flex; gap: 10px; }
+.footer .social-links a { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #4b4037; border-radius: 50%; color: #fff; text-decoration: none; }
+.footer .social-links a:hover { border-color: var(--agui-orange); background: var(--agui-orange); }
+
+/* Modales, campos y estados */
+.modal-content { overflow: hidden; border: 0; border-radius: 18px; box-shadow: var(--agui-shadow); }
+.modal-header { background: var(--agui-ink); color: #fff; }
+.modal-header .btn-close { filter: invert(1); }
+.modal-carrito .form { width: 100%; max-width: 430px; height: auto; min-height: 0; }
+.modal-carrito .form .inputCarrito, .modal-carrito .form .selectCarrito { min-height: 42px; padding: 8px 12px; }
+.modal-carrito .form .footerForm { justify-content: center; padding: 0; }
+.modal-carrito .form #btn-enviar { background: #211d19; color: #fff; }
+.modal-carrito .form #btn-enviar:hover { background: #080706; }
+.modal-carrito .form #cerrarBtn { background: #fff; color: #28221d; }
+.payment-notice { margin: 10px 0; font-size: 13px; line-height: 1.4; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgba(245,130,32,.5); outline-offset: 3px; }
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  body > nav.navbar { min-height: 72px; padding: 8px 14px; gap: 8px; }
+  .navbar .logo img { width: 54px; height: 50px; }
+  .navbar .navbar-collapse { position: absolute; top: 100%; left: 0; right: 0; padding: 10px 20px 18px; background: #fff; box-shadow: 0 12px 18px rgba(0,0,0,.08); }
+  .navbar .navbar-nav { align-items: stretch; gap: 0; }
+  .navbar .navbar-nav .nav-link { padding: 12px 8px; border-bottom: 1px solid #f1e9e2; }
+  .navbar .icons { margin-left: auto; margin-right: 4px; }
+  .banner { min-height: 590px; padding: 120px 12px 70px; background-position: 58% center; }
+  .banner-description { padding: 25px 16px; text-align: center; }
+  .banner-description .line { margin: 0 auto 20px; }
+  .banner-description h2 { font-size: clamp(25px, 7vw, 36px); }
+  .banner-description::after { font-size: 10px; letter-spacing: .15em; }
+  .events .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .events .row .col { min-height: 125px; margin: 0; }
+  .menu { padding: 54px 14px; }
+  .menu .menu-box { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+  .menu .menu-box .menu-card .menu-img { height: 145px; }
+  .menu .menu-box .menu-card .menu-info { padding: 5px 9px 15px; }
+  .menu .menu-box .menu-card .menu-info h2 { font-size: 17px; white-space: normal; }
+  .menu .menu-box .menu-card .menu-info p { min-height: 54px; font-size: 12px; }
+  .menu .menu-box .menu-card .menu-info h3 { font-size: 19px; }
+  .menu .menu-box .menu-card .menu-info .counter-btn { width: 29px; height: 29px; margin: 0 2px; }
+  .menu .menu-box .menu-card .menu-info .menu-btn-carro { width: 34px; height: 34px; margin-left: 5px; }
+  .servicios1, .servicios2 { padding: 38px 18px; gap: 20px; }
+  .servicios1 .descrip-servicios, .servicios2 .descrip-servicios { text-align: center; }
+  .servicios1 .img-servicios, .servicios2 .img-servicios { max-width: 100%; }
+  .servicios1 .img-servicios img, .servicios2 .img-servicios img { height: 230px; }
+  .minibanner { text-align: center; }
+  .footer .row-f { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+  .footer .footer-col img { max-width: 120px; height: auto; }
+}
+@media (max-width: 380px) {
+  .menu .menu-box { grid-template-columns: 1fr; max-width: 330px; }
+  .menu .menu-box .menu-card .menu-img { height: 210px; }
+  .menu .menu-box .menu-card .menu-info p { min-height: 0; }
+  .footer .row-f { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .menu .menu-box { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .servicios1, .servicios2 { padding-left: 28px; padding-right: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

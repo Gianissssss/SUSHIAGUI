@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubrí el menú, los servicios de catering y las propuestas de Sushi Agüi.">
+    <meta name="theme-color" content="#11100f">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos menu.css">
+    <link rel="stylesheet" href="servicios.css">
+    <link rel="stylesheet" href="estilos cart.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="estilos-redisenio.css">
+    <link rel="stylesheet" href="japanese-luxury.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/ilustracion.png">
+    <!--enlace css de bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <title>SUSHI AGÜI</title>
+</head>
+
+<body>
+    <!--navegador-->
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" aria-label="Navegación principal">
+        <a class="logo" href="#inicio" aria-label="Sushi Agüi, ir al inicio">
+            <img src="imagenes/logo fondo negro.png" alt="Logo de Sushi Agüi">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#inicio">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link" href="#menu">MENÚ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicios">SERVICIOS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">CONTACTO</a></li>
+            </ul>
+        </div>
+        <div class="icons">
+            <button type="button" class="btn" id="btnCarrito" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Abrir carrito de compras">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            </button>
+            <span class="cart-item-count" id="cartItemCount" aria-live="polite">0</span>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir o cerrar menú de navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <!-- Modal carrito -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de compras</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cartItemList"></ul>
+                    <div class="total-final" id="totalFinal">TOTAL: $0.00</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button"
+                        class="btn btn-primary" id="btn-pagar">Pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!--modal formulario pago-->
+    <div class="modal fade modal-carrito" id="myModal" tabindex="-1" aria-labelledby="paymentModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+            <form id="paymentForm" class="form">
+                <h2 id="paymentModalTitle">Finalizar pedido</h2>
+                <label class="labelCarrito" for="name">Nombre</label>
+                <input class="inputCarrito" type="text" id="name" name="name" required>
+                
+                <label class="labelCarrito" for="lastName">Apellido</label>
+                <input class="inputCarrito" type="text" id="lastName" name="lastName" required>
+                
+                <label class="labelCarrito" for="phone">Teléfono</label>
+                <input class="inputCarrito" type="tel" id="phone" name="phone" required>
+                
+                <label  class="labelCarrito" for="paymentMethod">Método de pago</label>
+                <select class="selectCarrito" id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="cash">Efectivo</option>
+                    <option value="card">Tarjeta</option>
+                </select>
+                <p id="paymentNotice" class="payment-notice">Este sitio es una demostración: no solicita ni procesa datos de tarjetas.</p>
+                <div class="footerForm">
+                    <button id="cerrarBtn" type="button" >Cerrar</button>
+                    <button id="btn-enviar" type="submit">Enviar</button>
+                </div>
+            </form>
+                </div> <!-- cierre modal-body -->
+            </div> <!-- cierre modal-content -->
+        </div> <!-- cierre modal-dialog -->
+    </div> <!-- cierre modal formulario -->
+    
+    <!-- inicio -->
+
+    <div class="banner" id="inicio">
+        <div class="banner-description">
+            <p class="luxury-eyebrow" data-aos="fade-up">SUSHI AGÜI <span>—</span> EXPERIENCIA JAPONESA</p>
+            <div data-aos="fade-up" data-aos-duration="900" class="line"></div>
+            <h2 data-aos="fade-up" data-aos-duration="1100">Tradición japonesa.<br><em class="luxury-hero-subtitle">Una experiencia para disfrutar.</em></h2>
+            <p class="luxury-intro" data-aos="fade-up" data-aos-duration="1300">Piezas elaboradas con dedicación, ingredientes de calidad y el sabor que nos distingue.</p>
+            <div class="luxury-hero-actions" data-aos="fade-up" data-aos-duration="1500">
+                <a class="luxury-button luxury-button--gold" href="#menu">Explorar menú <span aria-hidden="true">↗</span></a>
+                <a class="luxury-text-link" href="#servicios">Conocé nuestros servicios</a>
+            </div>
+        </div>
+    </div>
+
+    <!--section 1-->
+    <div class="seccion">
+        <section class="events">
+            <div class="row">
+                <div class="col">
+                    <img class="icon-servicios" src="imagenes/icon-calidad.png" width="60" alt="Preparación y productos de Sushi Agüi">
+                    <h4>Calidad</h4>
+                </div>
+                <div class="col">
+                    <img class="icon-servicios" src="imagenes/icon-tiempo.png" width="60" alt="Preparación y productos de Sushi Agüi">
+                    <h4>Rapidez</h4>
+                </div>
+                <div class="col">
+                    <img class="icon-servicios" src="imagenes/icon-user.png" width="60" alt="Preparación y productos de Sushi Agüi">
+                    <h4>Personal calificado</h4>
+                </div>
+                <div class="col">
+                    <img class="icon-servicios" src="imagenes/icon-fecha.png" width="60" alt="Preparación y productos de Sushi Agüi">
+                    <h4>Horario extendido</h4>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <!--menu-->
+    <div class="menu" id="menu">
+        <h1>Nuestro menú</h1>
+        <p class="luxury-section-kicker">SELECCIÓN DE LA CASA</p>
+        <p class="luxury-section-intro">Descubrí nuestras piezas y elegí tus favoritas.</p>
+        <div class="menu-box" >
+
+            <!--primer producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/new-york-rolls.jpg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">New york</h2>
+                    <p>Salmón, palta y queso crema (8u)</p>
+                    <h3 class="item-price">$1200</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--segundo producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/ebifurai.jpg"Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Ebi furai</h2>
+                    <p>Langostino, palta y queso crema (8u)</p>
+                    <h3 class="item-price">$1200</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--tercer producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/california2.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">California</h2>
+                    <p> Kanikama, pepino y palta (8u)</p>
+                    <h3 class="item-price">$1200</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--cuarto producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/gaeshes.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Geishas</h2>
+                    <p>Queso crema y palta envuelto en salmón (8u)</p>
+                    <h3 class="item-price">$1400</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--quinto producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/nigiri.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Nigiris</h2>
+                    <p>Arroz con lamina de salmón (8u)</p>
+                    <h3 class="item-price">$1400</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--sexto producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/tam.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Tamagos</h2>
+                    <p>Salmón y queso crema envuelto en tamago (8u)</p>
+                    <h3 class="item-price">$1400</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--septimo producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/rabas2.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Rabas</h2>
+                    <p>Porcion de rabas (15u)</p>
+                    <h3 class="item-price">$1800</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--octavo producto-->
+            <div class="menu-card">
+                <div class="menu-img">
+                    <img class="item-img" src="imagenes/langostin.jpeg" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="menu-info">
+                    <h2 class="item-title">Langostinos</h2>
+                    <p>Porcion de langostinos (12u)</p>
+                    <h3 class="item-price">$2000</h3>
+                    <div class="cart-container">
+                        <div class="counter-container">
+                            <button class="counter-btn">-</button>
+                            <span class="counter">0</span>
+                            <button class="counter-btn">+</button>
+                            <button type="button" class="menu-btn-carro" aria-label="Agregar producto al carrito"><i
+                                    class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--servicios-->
+    <div class="banner-servicios" id="servicios">
+        <div class="div-servicios">
+            <p class="luxury-section-kicker">MOMENTOS ESPECIALES</p><h2>Catering <em>&amp; Eventos</em></h2>
+        </div>
+    </div>
+    <div class="servicios1">
+        <div class="descrip-servicios">
+            <p class="luxury-section-kicker">UNA PROPUESTA A TU MEDIDA</p><h3>Nuestro catering</h3>
+            <p>Ya estés organizando un elegante evento corporativo o una reunión informal con tus amigos, el catering de
+                SuShi Agüi es una elección deliciosa para cualquier ocasión especial.</p>
+            <br>
+            <p>Trabajamos preparando toda clase de platos listos para consumir en eventos, reuniones, banquetes y
+                fiestas, con el sushi como principal reclamo.</p>
+        </div>
+        <div class="img-servicios"  data-aos="fade-left" data-aos-duration="2000">
+            <img src="imagenes/catering1.webp" alt="Preparación y productos de Sushi Agüi">
+        </div>
+    </div>
+    <div class="servicios2">
+        <div class="img-servicios" data-aos="fade-right" data-aos-duration="2000">
+            <img src="imagenes/catering2.webp" alt="Preparación y productos de Sushi Agüi">
+        </div>
+        <div class="descrip-servicios">
+            <p class="luxury-section-kicker">CALIDAD EN CADA DETALLE</p><h3>Nuestros platos</h3>
+            <p>Nuestras piezas de Sushi, son muy demandadas por su tamaño, calidad de producto y frescura, además de ser
+                un Sushi totalmente sano y saludable.</p>
+            <br>
+            <p>Por eso, su sabor y textura son tan especiales. Deja a tus invitados boquiabiertos con esta gran
+                experiencia.</p>
+        </div>
+    </div>
+<div class="minibanner">
+    <div class="cont-minibanner">
+        <p class="luxury-section-kicker">SUSHI AGÜI</p><em>Tu próxima experiencia comienza acá.</em></p>
+    </div>
+    <div class="div-sus">
+        <div class="suscription">
+            <p>Suscribete para recibir notificaciones nuevas</p>
+            <form class="form" id="myForm">
+                <input id="myInput" class="input" placeholder="Correo electrónico" type="email" required>
+                <span class="input-border"></span>
+                <button type="submit" class="btn-sub" id="btn-sub">Suscribirse</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+
+
+    <!--footer-->
+    <footer class="footer" id="contacto">
+        <div class="container-f">
+            <div class="row-f">
+                <div class="footer-col">
+                    <img src="imagenes/logo fondo negro.png" style="margin:5px;" width="140" height="90" alt="Preparación y productos de Sushi Agüi">
+                </div>
+                <div class="footer-col">
+                    <h4>SUSHI AGÜI COMPANY</h4>
+                    <ul class="ul-f">
+                        <li><a href="#inicio">INICIO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tienda online</h4>
+                    <ul class="ul-f">
+                        <li><a href="#menu">MENÚ</a></li>
+                        <li><a href="#servicios">SERVICIOS</a></li>
+                        <li><a href="#contacto">CONTACTO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Seguinos</h4>
+                    <div class="social-links">
+                        <a href="https://api.whatsapp.com/send?phone=542995354020" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/aguisushi/" aria-label="Facebook de Sushi Agüi"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/sushi_agui_cipolletti/" aria-label="Instagram de Sushi Agüi"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ 
+<!-- JavaScript de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<!-- JavaScript propio -->
+<script src="main.js"></script>
+</body>
+</html>
